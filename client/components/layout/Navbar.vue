@@ -10,9 +10,11 @@
         <div class="nav-center">
           <a class="nav-item hero-brand" href="/">
             <img src="~assets/logo.svg" :alt="pkginfo.description">
+            <tooltip :label="'v' + pkginfo.version" placement="right" type="success" size="small" :no-animate="true" :always="true" :rounded="true">
               <div class="is-hidden-mobile">
-                <span class="vue">Kwavonza </span><strong class="admin">Boutique</strong>
-              </div>
+                <span class="vue">Small Business Analytics </Simple Business Analytics><strong class="admin">SBA</strong>
+          </div>
+          </tooltip>
           </a>
         </div>
         <div class="nav-right is-flex"></div>
