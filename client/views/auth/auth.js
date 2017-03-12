@@ -9,8 +9,15 @@ export default {
   login (context, username, password, redirect) {
     context.$http.post('api-token-auth/', JSON.stringify({'username': username, 'password': password})).then(response => {
       localStorage.setItem('token', response.body.token)
+      localStorage.setItem('username', username)
 
       this.user.authenticated = true
+      context.$store.dispatch('addToMessageBus', {
+        title: 'Success',
+        message: `Welcome back ${username}`,
+        type: 'success',
+        duration: 5000
+      })
       // Redirect to a specified route
       if (redirect) {
         router.push(redirect)
@@ -30,8 +37,6 @@ export default {
   },
   register (context, email, username, password, redirect) {
     context.$http.post('auth/register/', JSON.stringify({'email': email, 'username': username, 'password': password})).then(response => {
-      localStorage.setItem('token', response.body.token)
-
       context.$store.dispatch('addToMessageBus', {
         title: 'Success',
         message: `You registered successfully.Now login in to start using the system`,
@@ -57,6 +62,7 @@ export default {
   },
   logout () {
     localStorage.removeItem('token')
+    localStorage.removeItem('username')
     this.user.authenticated = false
   },
   loggedIn () {

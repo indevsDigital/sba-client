@@ -20,6 +20,11 @@ export default new Router({
       component: require('../views/auth/register/Register')
     },
     {
+      name: 'Log in',
+      path: '/login',
+      component: require('../views/auth/login/Login')
+    },
+    {
       path: '*',
       redirect: '/'
     }
