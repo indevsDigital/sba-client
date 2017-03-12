@@ -10,7 +10,7 @@ import { TOGGLE_SIDEBAR } from 'vuex-store/mutation-types'
 
 Vue.use(Resource)
 Vue.use(NProgress)
-
+Vue.http.options.root = 'http://127.0.0.1:8000/api'
 // Enable devtools
 Vue.config.devtools = true
 

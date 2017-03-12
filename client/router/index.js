@@ -15,6 +15,11 @@ export default new Router({
     },
     ...generateRoutesFromMenu(menuModule.state.items),
     {
+      name: 'Register',
+      path: '/register',
+      component: require('../views/auth/register/Register')
+    },
+    {
       path: '*',
       redirect: '/'
     }
