@@ -5,6 +5,7 @@ import {
   AppMain,
   FooterBar
 } from '../components/layout'
+import Messages from '../components/helpers/message/Message'
 import {
   mapGetters,
   mapActions
@@ -16,7 +17,8 @@ export default {
     Sidebar,
     AppMain,
     FooterBar,
-    NprogressContainer
+    NprogressContainer,
+    Messages
   },
 
   beforeMount () {

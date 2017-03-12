@@ -32,7 +32,12 @@ export default {
     context.$http.post('auth/register/', JSON.stringify({'email': email, 'username': username, 'password': password})).then(response => {
       localStorage.setItem('token', response.body.token)
 
-      this.user.authenticated = true
+      context.$store.dispatch('addToMessageBus', {
+        title: 'Success',
+        message: `You registered successfully.Now login in to start using the system`,
+        type: 'success',
+        duration: 5000
+      })
       // Redirect to a specified route
       if (redirect) {
         router.push(redirect)
