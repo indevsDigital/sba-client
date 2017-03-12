@@ -18,7 +18,7 @@
           </a>
         </div>
         <div class="nav-right nav-menu">
-        <router-link v-if="auth.authenticated" :to="{name: 'My Profile', params: { username: username } }" class="nav-item"><span class="icon"><i class="fa fa-user"></i></span>View Profile</router-link></div>
+        <router-link v-if="auth.authenticated" :to="{name: 'My Profile', params: { username: username } }" class="nav-item"><span class="icon"><i class="fa fa-user"></i></span>My Profile</router-link></div>
         <router-link v-if="auth.authenticated" to="/login" class="nav-item"><span class="icon"><i class="fa fa-sign-out"></i></span>Log out</router-link>
         <router-link v-if="!auth.authenticated" to="/login" class="nav-item"><span class="icon"><i class="fa fa-sign-in"></i></span>Log in</router-link></div>
       </nav>
