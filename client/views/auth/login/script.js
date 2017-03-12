@@ -15,7 +15,7 @@ export default{
     }
   },
   created () {
-    auth.logout()
+    auth.logout(this)
   },
   methods: {
     navigate () {

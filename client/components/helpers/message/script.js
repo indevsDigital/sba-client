@@ -9,7 +9,7 @@ const openNotification = (propsData = {
   type: '',
   direction: '',
   duration: 4500,
-  container: '.notifications'
+  container: '.messages'
 }) => {
   return new NotificationComponent({
     el: document.createElement('div'),

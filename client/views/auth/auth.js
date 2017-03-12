@@ -10,8 +10,7 @@ export default {
     context.$http.post('api-token-auth/', JSON.stringify({'username': username, 'password': password})).then(response => {
       localStorage.setItem('token', response.body.token)
       localStorage.setItem('username', username)
-
-      this.user.authenticated = true
+      context.$store.dispatch('toggleAuth', true)
       context.$store.dispatch('addToMessageBus', {
         title: 'Success',
         message: `Welcome back ${username}`,
@@ -60,10 +59,10 @@ export default {
       context.error = 'Server is offline.Please try again in a moment'
     })
   },
-  logout () {
+  logout (context) {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
-    this.user.authenticated = false
+    context.$store.dispatch('toggleAuth', false)
   },
   loggedIn () {
     return !!localStorage.token

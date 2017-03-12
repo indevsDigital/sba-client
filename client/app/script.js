@@ -43,7 +43,8 @@ export default {
   },
 
   computed: mapGetters({
-    sidebar: 'sidebar'
+    sidebar: 'sidebar',
+    auth: 'authenticated'
   }),
 
   methods: mapActions([

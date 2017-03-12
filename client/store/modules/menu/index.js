@@ -43,6 +43,20 @@ const state = {
       meta: {
         icon: 'fa-tasks'
       }
+    },
+    {
+      name: 'Manage Business',
+      path: '/business',
+      meta: {
+        icon: 'fa-tasks'
+      }
+    },
+    {
+      name: 'View Profile',
+      path: 'profile/:id',
+      meta: {
+        icon: 'fa-user'
+      }
     }
   ]
 }
