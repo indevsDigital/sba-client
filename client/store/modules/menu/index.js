@@ -50,13 +50,6 @@ const state = {
       meta: {
         icon: 'fa-tasks'
       }
-    },
-    {
-      name: 'View Profile',
-      path: 'profile/:id',
-      meta: {
-        icon: 'fa-user'
-      }
     }
   ]
 }

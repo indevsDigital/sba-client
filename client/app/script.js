@@ -10,7 +10,7 @@ import {
   mapGetters,
   mapActions
 } from 'vuex'
-
+/* global  localStorage:true */
 export default {
   components: {
     Navbar,
@@ -46,7 +46,17 @@ export default {
     sidebar: 'sidebar',
     auth: 'authenticated'
   }),
-
+  created () {
+    if (!!localStorage.token === true) {
+      this.$store.dispatch('toggleAuth', true)
+    }
+    this.$store.dispatch('addToMessageBus', {
+      title: 'Awesome',
+      message: `Welcome to SBA.We are excited`,
+      type: 'success',
+      duration: 5000
+    })
+  },
   methods: mapActions([
     'toggleDevice',
     'toggleSidebar'

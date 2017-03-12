@@ -25,6 +25,11 @@ export default new Router({
       component: require('../views/auth/login/Login')
     },
     {
+      name: 'My Profile',
+      path: '/profile/:username',
+      component: require('../views/profile/Profile')
+    },
+    {
       path: '*',
       redirect: '/'
     }

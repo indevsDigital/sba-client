@@ -16,6 +16,12 @@ export default{
   },
   created () {
     auth.logout(this)
+    this.$store.dispatch('addToMessageBus', {
+      title: 'Oh Snap',
+      message: `You must log in to access the system`,
+      type: 'danger',
+      duration: 5000
+    })
   },
   methods: {
     navigate () {
