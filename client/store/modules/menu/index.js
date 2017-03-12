@@ -22,7 +22,28 @@ const state = {
     charts,
     uifeatures,
     components,
-    tables
+    tables,
+    {
+      name: 'Inventory',
+      path: '/inventory',
+      meta: {
+        icon: 'fa-table'
+      }
+    },
+    {
+      name: 'P.O.S',
+      path: '/pos',
+      meta: {
+        icon: 'fa-usd'
+      }
+    },
+    {
+      name: 'Accounts',
+      path: '/accounts',
+      meta: {
+        icon: 'fa-tasks'
+      }
+    }
   ]
 }
 
