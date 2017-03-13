@@ -29,7 +29,8 @@ export default{
     },
     submit () {
       if (this.validate_form()) {
-        auth.login(this, this.credentials.username, this.credentials.password, 'dashboard')
+        const redirect = this.$route.query.redirect || 'dashboard'
+        auth.login(this, this.credentials.username, this.credentials.password, redirect)
         this.credentials.username = ''
         this.credentials.password = ''
       }

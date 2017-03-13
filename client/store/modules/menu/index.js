@@ -1,6 +1,6 @@
 import * as types from '../../mutation-types'
 import lazyLoading from './lazyLoading'
-
+import auth from '../../../views/auth/auth'
 // show: meta.label -> name
 // name: component name
 // meta.label: display label
@@ -10,6 +10,16 @@ const state = {
     {
       name: 'Dashboard',
       path: '/dashboard',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
       meta: {
         icon: 'fa-tachometer'
       },
@@ -18,6 +28,16 @@ const state = {
     {
       name: 'Inventory',
       path: '/inventory',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
       meta: {
         icon: 'fa-table'
       },
@@ -26,6 +46,16 @@ const state = {
     {
       name: 'P.O.S',
       path: '/pos',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
       meta: {
         icon: 'fa-usd'
       }
@@ -33,6 +63,16 @@ const state = {
     {
       name: 'Accounts',
       path: '/accounts',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
       meta: {
         icon: 'fa-tasks'
       }
@@ -40,6 +80,16 @@ const state = {
     {
       name: 'Manage Business',
       path: '/business',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
       meta: {
         icon: 'fa-tasks'
       }

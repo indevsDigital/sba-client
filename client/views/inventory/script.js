@@ -1,5 +1,13 @@
+import {
+  mapGetters
+} from 'vuex'
 export default {
+  /* global  localStorage:true */
   created () {
-    this.$store.dispatch('fetchProducts')
-  }
+    const token = localStorage.getItem('token')
+    this.$store.dispatch('fetchProducts', token)
+  },
+  computed: mapGetters({
+    products: 'getProducts'
+  })
 }
