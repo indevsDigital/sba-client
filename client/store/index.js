@@ -7,6 +7,7 @@ import * as getters from './getters'
 import app from './modules/app'
 import menu from './modules/menu'
 import messages from './modules/messages'
+import products from './modules/products'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
   modules: {
     app,
     menu,
-    messages
+    messages,
+    products
   },
   state: {
     pkg
