@@ -10,7 +10,10 @@ export default {
     context.$http.post('api-token-auth/', JSON.stringify({'username': username, 'password': password})).then(response => {
       localStorage.setItem('token', response.body.token)
       localStorage.setItem('username', username)
-      context.$store.dispatch('toggleAuth', true)
+      context.$store.dispatch('toggleAuth', {
+        'authenticated': true,
+        'username': username
+      })
       context.$store.dispatch('addToMessageBus', {
         title: 'Success',
         message: `Welcome back ${username}`,

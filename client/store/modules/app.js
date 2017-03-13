@@ -13,7 +13,8 @@ const state = {
     translate3d: true
   },
   auth: {
-    authenticated: false
+    authenticated: false,
+    username: ''
   }
 }
 
@@ -37,7 +38,8 @@ const mutations = {
     }
   },
   [types.TOGGLE_AUTHENTICATED] (state, auth) {
-    state.auth.authenticated = auth
+    state.auth.authenticated = auth.authenticated
+    state.auth.username = auth.username
   }
 }
 

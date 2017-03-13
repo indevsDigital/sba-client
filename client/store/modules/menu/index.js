@@ -20,7 +20,8 @@ const state = {
       path: '/inventory',
       meta: {
         icon: 'fa-table'
-      }
+      },
+      component: lazyLoading('inventory', true)
     },
     {
       name: 'P.O.S',

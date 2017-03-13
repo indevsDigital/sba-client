@@ -48,7 +48,10 @@ export default {
   }),
   created () {
     if (!!localStorage.token === true) {
-      this.$store.dispatch('toggleAuth', true)
+      this.$store.dispatch('toggleAuth',  {
+        'authenticated': true,
+        'username': localStorage.getItem('username')
+      })
     }
     this.$store.dispatch('addToMessageBus', {
       title: 'Awesome',

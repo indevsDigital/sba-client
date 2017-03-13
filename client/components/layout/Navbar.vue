@@ -18,7 +18,7 @@
           </router-link>
         </div>
         <div class="nav-right nav-menu">
-        <router-link v-if="auth.authenticated" :to="{name: 'My Profile', params: { username: username } }" class="nav-item"><span class="icon"><i class="fa fa-user"></i></span>My Profile</router-link></div>
+        <router-link v-if="auth.authenticated" :to="{name: 'My Profile', params: { username: auth.username } }" class="nav-item"><span class="icon"><i class="fa fa-user"></i></span>My Profile</router-link></div>
         <router-link v-if="auth.authenticated" to="/login" class="nav-item last-item"><span class="icon"><i class="fa fa-sign-out"></i></span>Log out</router-link>
         <router-link v-if="!auth.authenticated" to="/login" class="nav-item last-item"><span class="icon"><i class="fa fa-sign-in"></i></span>Log in</router-link></div>
       </nav>
@@ -29,20 +29,13 @@
 <script>
 import Tooltip from 'vue-bulma-tooltip'
 import { mapGetters, mapActions } from 'vuex'
-/* global  localStorage:true */
 export default {
   components: {
     Tooltip
   },
-  data () {
-    return {
-      'username': localStorage.getItem('username')
-    }
-  },
   props: {
     show: Boolean
   },
-
   computed: mapGetters({
     pkginfo: 'pkg',
     sidebar: 'sidebar',
