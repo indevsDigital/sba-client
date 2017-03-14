@@ -1,0 +1,29 @@
+<div class="column">
+  <div class="is-ancestor tile">
+    <div class="tile is-parent column is-half is-offset-one-quarter">
+      <article class="tile is-child box">
+        <h1 class="title">Edit category </h1>
+        <div class="block styles-box">
+          <notification v-if="error" :title="'Oh Snap'" :container="'.styles-box'" :type="'danger'" :direction="'Down'" :message="error"
+            :duration="0"></notification>
+        </div>
+        <div class="block">
+          <label class="label">Name</label>
+          <p class="control has-icon">
+            <input class="input" type="text" placeholder="name" v-model="category.name" v-bind:class="{'is-danger': Formerrors.name }">
+            <i class="fa fa-info"></i>
+            <span v-if="Formerrors.username" class="help is-danger">{{ Formerrors.name }}</span>
+          </p>
+          <p class="control">
+            <button class="button is-success" @click="submit()">
+                update
+              </button>
+            <button class="button is-danger" @click="navigate()">
+                cancel
+              </button>
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

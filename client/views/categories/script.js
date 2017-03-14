@@ -11,7 +11,7 @@ export default {
     navigate () {
       this.$router.push({path: 'categories/add'})
     },
-    delete (category) {
+    onDelete (category) {
       const token = localStorage.getItem('token')
       this.$store.dispatch('deleteCategory', {
         'id': category.id,

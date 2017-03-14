@@ -18,7 +18,7 @@ const mutations = {
     state.categories.push(category)
   },
   [DELETE_CATEGORY] (state, categoryid) {
-    state.all = state.all.filter(p => p.id !== categoryid)
+    state.categories = state.categories.filter(p => p.id !== categoryid)
   }
 }
 export default {

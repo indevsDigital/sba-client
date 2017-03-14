@@ -15,7 +15,7 @@
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th colspan="3">Actions</th>
+              <th colspan="2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -25,18 +25,13 @@
               </td>
               <td>{{category.name}}</td>
               <td class="is-icon">
-                <a href="#" v-on:click.prevent.stop="delete(product)" title="Delete this category">
+                <a href="#" v-on:click.prevent.stop="onDelete(category)" title="Delete this category">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>
               <td class="is-icon">
                 <a href="#" title="edit this category">
                   <i class="fa fa-pencil"></i>
-                </a>
-              </td>
-              <td class="is-icon">
-                <a href="#" title="view more about this category">
-                  <i class="fa fa-plus"></i>
                 </a>
               </td>
             </tr>

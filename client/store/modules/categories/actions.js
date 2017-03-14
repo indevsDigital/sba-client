@@ -18,6 +18,6 @@ export function createCategory ({ commit }, {category, token}) {
 export function deleteCategory ({ commit }, {
   id, token
 }) {
-  return http.delete(`categories/${id}`)
+  return http.delete(`categories/${id}/`)
     .then((response) => commit(DELETE_CATEGORY, id))
 }
