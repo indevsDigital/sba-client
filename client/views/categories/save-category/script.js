@@ -1,4 +1,5 @@
 import Notification from 'vue-bulma-notification'
+  /* global  localStorage:true */
 export default{
   components: {
     Notification
@@ -18,7 +19,12 @@ export default{
     },
     submit () {
       if (this.validate_form()) {
-        this.category.name = ''
+        const token = localStorage.getItem('token')
+        const name = JSON.stringify({'name': this.category.name})
+        this.$store.dispatch('createCategory', {
+          'category': name,
+          'token': token})
+        this.$router.push({path: '/categories'})
       }
     },
     validate_form () {

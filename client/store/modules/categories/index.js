@@ -14,7 +14,6 @@ const mutations = {
     state.categories = categories
   },
   [CREATE_CATEGORY] (state, category) {
-    state.categories.results.push(category)
   }
 }
 export default {

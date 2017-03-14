@@ -12,7 +12,7 @@ Vue.use(Resource)
 Vue.use(NProgress)
 Vue.http.options.root = 'http://127.0.0.1:8000/api'
 Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token') || ''
-// Enable devtools
+Vue.http.headers.common['Content-Type'] = 'application/json'
 Vue.config.devtools = true
 
 sync(store, router)
