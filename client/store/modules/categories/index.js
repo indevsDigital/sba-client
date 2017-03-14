@@ -2,7 +2,8 @@ import * as actions from './actions'
 import * as getters from './getters'
 
 import { FETCH_CATEGORIES,
-        CREATE_CATEGORY }
+        CREATE_CATEGORY,
+      DELETE_CATEGORY }
       from './mutation-types'
 
 const initialState = {
@@ -14,6 +15,10 @@ const mutations = {
     state.categories = categories
   },
   [CREATE_CATEGORY] (state, category) {
+    state.categories.push(category)
+  },
+  [DELETE_CATEGORY] (state, categoryid) {
+    state.all = state.all.filter(p => p.id !== categoryid)
   }
 }
 export default {

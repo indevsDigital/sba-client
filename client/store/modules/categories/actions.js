@@ -1,7 +1,8 @@
 import { http } from 'vue'
 import {
   FETCH_CATEGORIES,
-  CREATE_CATEGORY
+  CREATE_CATEGORY,
+  DELETE_CATEGORY
 } from './mutation-types'
 
 export function fetchCategories ({ commit }, token) {
@@ -13,4 +14,10 @@ export function createCategory ({ commit }, {category, token}) {
     .then((response) => {
       commit(CREATE_CATEGORY, response.body)
     })
+}
+export function deleteCategory ({ commit }, {
+  id, token
+}) {
+  return http.delete(`categories/${id}`)
+    .then((response) => commit(DELETE_CATEGORY, id))
 }

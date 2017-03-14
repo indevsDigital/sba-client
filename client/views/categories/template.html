@@ -10,7 +10,7 @@
       <h4 class="title">Current Categories</h4>
       <p class="">The categories are for items you are selling in the shop</p>
       <div class="table-responsive">
-        <table class="table is-bordered is-striped is-narrow" v-if="categories.results">
+        <table class="table is-bordered is-striped is-narrow" v-if="categories.length>1">
           <thead>
             <tr>
               <th>#</th>
@@ -19,13 +19,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="category in categories.results">
+            <tr v-for="category in categories">
               <td>
                 {{category.id}}
               </td>
               <td>{{category.name}}</td>
               <td class="is-icon">
-                <a href="#" title="Delete this category">
+                <a href="#" v-on:click.prevent.stop="delete(product)" title="Delete this category">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>
@@ -42,7 +42,7 @@
             </tr>
           </tbody>
         </table>
-        <p v-if="!categories.results">There are no categories added yet</p>
+        <p v-if="!categories.length>1">There are no categories added yet</p>
       </div>
     </article>
   </div>
