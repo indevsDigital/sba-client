@@ -30,6 +30,11 @@ export default new Router({
       component: require('../views/profile/Profile')
     },
     {
+      name: 'Add a New Category',
+      path: '/categories/add',
+      component: require('../views/categories/save-category')
+    },
+    {
       path: '*',
       redirect: '/'
     }

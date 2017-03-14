@@ -26,6 +26,24 @@ const state = {
       component: lazyLoading('dashboard', true)
     },
     {
+      name: 'Categories',
+      path: '/categories',
+      beforeEnter (to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.path }
+          })
+        } else {
+          next()
+        }
+      },
+      meta: {
+        icon: 'fa-tags'
+      },
+      component: lazyLoading('categories', true)
+    },
+    {
       name: 'Inventory',
       path: '/inventory',
       beforeEnter (to, from, next) {
