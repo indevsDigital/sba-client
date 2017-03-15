@@ -32,7 +32,7 @@ export default {
     },
     onRemoveClicked (categoryid) {
       const token = localStorage.getItem('token')
-      this.deleteProduct(categoryid, token).then(() => {
+      this.deleteCategory(categoryid, token).then(() => {
         if (categoryid === this.categoryInForm.id) {
           this.resetProductInForm()
         }
