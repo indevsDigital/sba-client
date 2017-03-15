@@ -1,7 +1,11 @@
 <div>
   <div class="tile is-ancestor">
   <div class="tile is-parent">
-    <button type="button" class="button is-primary" @click="navigate()">add a new category</button>
+    <save-category-form
+      :category="categoryInForm"
+      v-on:submit="onFormSave"
+      v-on:cancel="resetCategoryInForm"
+    ></save-category-form>
   </div>
   </div>
 <div class="tile is-ancestor">
@@ -19,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="category in categories">
+            <tr v-for="category in categories" track-by="id">
               <td>
                 {{category.id}}
               </td>
@@ -30,7 +34,7 @@
                 </a>
               </td>
               <td class="is-icon">
-                <a href="#" title="edit this category">
+                <a href="#" v-on:click.prevent="onEditClicked(category)" title="edit this category">
                   <i class="fa fa-pencil"></i>
                 </a>
               </td>

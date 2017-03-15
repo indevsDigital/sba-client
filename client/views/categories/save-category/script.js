@@ -1,30 +1,26 @@
-import Notification from 'vue-bulma-notification'
-  /* global  localStorage:true */
 export default{
-  components: {
-    Notification
-  },
+  props: ['category'],
   data () {
     return {
-      category: {
-        name: ''
-      },
-      Formerrors: {},
-      error: ''
+      Formerrors: {}
+    }
+  },
+  watch: {
+    'category.id' () {
+      this.Formerrors = {}
     }
   },
   methods: {
     navigate () {
-      this.$router.go(window.history.back())
+
     },
-    submit () {
+    onCancel () {
+      this.Formerrors = {}
+      this.$emit('cancel')
+    },
+    onSubmit () {
       if (this.validate_form()) {
-        const token = localStorage.getItem('token')
-        const name = JSON.stringify({'name': this.category.name})
-        this.$store.dispatch('createCategory', {
-          'category': name,
-          'token': token})
-        this.$router.push({path: '/categories'})
+        this.$emit('submit', this.category)
       }
     },
     validate_form () {
