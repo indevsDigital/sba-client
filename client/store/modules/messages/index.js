@@ -1,6 +1,6 @@
 import * as getters from './getters'
 import * as actions from './actions'
-import SHOW_MESSAGE from './mutation-types'
+import {SHOW_MESSAGE} from './mutation-types'
 
 const initialstate = {
   messages: []

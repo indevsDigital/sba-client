@@ -47,18 +47,20 @@ export default {
     auth: 'authenticated'
   }),
   created () {
-    if (!!localStorage.token === true) {
-      this.$store.dispatch('toggleAuth',  {
-        'authenticated': true,
-        'username': localStorage.getItem('username')
-      })
-    }
+    localStorage.getItem('token')
     this.$store.dispatch('addToMessageBus', {
       title: 'Awesome',
       message: `Welcome to SBA.We are excited`,
       type: 'success',
       duration: 5000
     })
+    if (!!localStorage.token === true) {
+      this.$store.dispatch('toggleAuth',  {
+        'authenticated': true,
+        'username': localStorage.getItem('username')
+      })
+      this.$store.dispatch('fetchUserDetails', localStorage.getItem('token'))
+    }
   },
   methods: mapActions([
     'toggleDevice',

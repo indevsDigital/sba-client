@@ -14,7 +14,7 @@
       <h4 class="title">Current Categories</h4>
       <p class="">The categories are for items you are selling in the shop</p>
       <div class="table-responsive">
-        <table class="table is-bordered is-striped is-narrow" v-if="categories.length>1">
+        <table class="table is-bordered is-striped is-narrow" v-if="categories.length>0">
           <thead>
             <tr>
               <th>#</th>
@@ -41,7 +41,7 @@
             </tr>
           </tbody>
         </table>
-        <p v-if="!categories.length>1">There are no categories added yet</p>
+        <p v-if="!categories.length>0">There are no categories added yet</p>
       </div>
     </article>
   </div>

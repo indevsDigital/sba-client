@@ -15,7 +15,7 @@ export function createCategory ({ commit, state }, {category, token}) {
     .then((response) => {
       commit(CREATE_CATEGORY, response.body)
     },
-    (error) => {
+    (error, state) => {
       if (error.status === 403) {
         return state.messages.push({
           title: 'Oh Snap!',
