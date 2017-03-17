@@ -20,7 +20,6 @@ export default {
     NprogressContainer,
     Messages
   },
-
   beforeMount () {
     const {
       body
@@ -55,7 +54,7 @@ export default {
       duration: 5000
     })
     if (!!localStorage.token === true) {
-      this.$store.dispatch('toggleAuth',  {
+      this.$store.dispatch('toggleAuth', {
         'authenticated': true,
         'username': localStorage.getItem('username')
       })

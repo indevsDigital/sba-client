@@ -1,1 +1,83 @@
-<p>My Profile</p>
+<div>
+  <div class="block column is-half is-offset-one-quarter">
+    <button type="button" class="button is-success" @click="onClickpersonal()">Personal Details</button>
+    <button type="button" class="button is-success" @click="onClickprofile()">Profile</button>
+  </div>
+  <transition name="fade" >
+  <div class="column animated" v-if="personal && user.User">
+    <div class="is-ancestor tile">
+      <div class="tile is-parent column is-half is-offset-one-quarter">
+        <article class="tile is-child box">
+          <h1 class="title">Update Personal Details </h1>
+          <div class="block">
+            <label class="label">Username</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Username" v-model="user.User.username">
+            </p>
+            <label class="label">Email</label>
+            <p class="control">
+              <input class="input" type="email" placeholder="Email" v-model="user.User.email">
+            </p>
+            <label class="label">First Name</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="First Name" v-model="user.User.first_name">
+            </p>
+            <label class="label">Last Name</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Last Name" v-model="user.User.last_name">
+            </p>
+            <p class="control">
+              <button class="button is-success">
+                Update
+              </button>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="column animated" v-if="profile && user.profile">
+    <div class="is-ancestor tile">
+      <div class="tile is-parent column is-half is-offset-one-quarter">
+        <article class="tile is-child box">
+          <h1 class="title">Update Profile </h1>
+          <div class="block">
+            <div class="card">
+  <div class="card-image">
+    <figure class="image is-square">
+      <img :src="user.profile.avatar" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">{{user.User.username}}</p>
+        <p class="subtitle is-6">Profile Picture</p>
+      </div>
+    </div>
+  </div>
+</div>
+            <label class="label">Username</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Username" v-model="user.User.username">
+            </p>
+            <label class="label">Nation I.D</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="I.D" v-model="user.User.first_name">
+            </p>
+            <label class="label">Phone Number</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Phone Number" v-model="user.User.last_name">
+            </p>
+            <p class="control">
+              <button class="button is-success">
+                Update
+              </button>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  </transition>
+</div>

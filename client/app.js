@@ -12,6 +12,16 @@ Vue.use(Resource)
 Vue.use(NProgress)
 Vue.http.options.root = 'http://127.0.0.1:8000/api'
 Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token') || ''
+Vue.http.interceptors.push(function (request, next) {
+  next(function (response) {
+    if (response.status === 403) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('username')
+      store.dispatch('toggleAuth', false)
+      router.go('/login')
+    }
+  })
+})
 Vue.http.headers.common['Content-Type'] = 'application/json'
 Vue.config.devtools = true
 

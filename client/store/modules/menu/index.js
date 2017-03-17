@@ -110,7 +110,8 @@ const state = {
       },
       meta: {
         icon: 'fa-tasks'
-      }
+      },
+      component: lazyLoading('business', true)
     }
   ]
 }

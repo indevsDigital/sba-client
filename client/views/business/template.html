@@ -1,0 +1,32 @@
+<div class="column animated" v-if="user.business">
+    <div class="is-ancestor tile">
+      <div class="tile is-parent column is-half is-offset-one-quarter">
+        <article class="tile is-child box">
+          <h1 class="title">Update Business Details </h1>
+          <div class="block">
+            <label class="label">Name</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="name" v-model="user.business.name">
+            </p>
+            <label class="label">County</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="County" v-model="user.business.county">
+            </p>
+            <label class="label">City</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="City" v-model="user.business.city">
+            </p>
+            <label class="label">Street</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Street" v-model="user.business.street">
+            </p>
+            <p class="control">
+              <button class="button is-success">
+                Update
+              </button>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
