@@ -3,6 +3,7 @@
   <div class="tile is-parent">
     <save-category-form
       :category="categoryInForm"
+      :user = "user"
       v-on:submit="onFormSave"
       v-on:cancel="resetCategoryInForm"
     ></save-category-form>
@@ -23,9 +24,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="category in categories" track-by="id">
+            <tr v-for="(category, index) in categories" track-by="id">
               <td>
-                {{category.id}}
+                {{index + 1}}
               </td>
               <td>{{category.name}}</td>
               <td class="is-icon">

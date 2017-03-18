@@ -7,6 +7,7 @@ const initialData = () => {
   return {
     categoryInForm: {
       id: null,
+      business: '',
       name: ''
     }
   }
@@ -26,9 +27,20 @@ export default {
       'saveCategory',
       'deleteCategory'
     ]),
+    business () {
+      return `http://127.0.0.1:8000/api/businesses/${this.user.business.id}/`
+    },
     onFormSave (Category) {
       const token = localStorage.getItem('token')
-      this.saveCategory({'category': Category, 'token': token}).then(() => this.resetCategoryInForm())
+      this.saveCategory({'category': {'id': Category.id, 'name': Category.name, 'business': this.business()}, 'token': token}).then(() => {
+        this.resetCategoryInForm()
+        this.$store.dispatch('addToMessageBus', {
+          title: 'Success',
+          message: `The Category has been Added sucessfully`,
+          type: 'success',
+          duration: 5000
+        })
+      })
     },
     onRemoveClicked (categoryid) {
       const token = localStorage.getItem('token')
@@ -36,6 +48,12 @@ export default {
         if (categoryid === this.categoryInForm.id) {
           this.resetProductInForm()
         }
+        this.$store.dispatch('addToMessageBus', {
+          title: 'Success',
+          message: `The Category has been deleted sucessfully`,
+          type: 'success',
+          duration: 5000
+        })
       })
     },
     resetCategoryInForm () {
@@ -46,6 +64,7 @@ export default {
     }
   },
   computed: mapGetters({
-    categories: 'getCategories'
+    categories: 'getCategories',
+    user: 'getUserDetails'
   })
 }

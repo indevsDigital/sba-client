@@ -22,6 +22,13 @@ Vue.http.interceptors.push(function (request, next) {
     }
   })
 })
+Vue.http.interceptors.push(function (request, next) {
+  next(function (response) {
+    if (response.body[0] === 'You do not have business yet') {
+      router.push('/business')
+    }
+  })
+})
 Vue.http.headers.common['Content-Type'] = 'application/json'
 Vue.config.devtools = true
 

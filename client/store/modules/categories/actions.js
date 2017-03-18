@@ -16,30 +16,7 @@ export function createCategory ({ commit, state }, {category, token}) {
       commit(CREATE_CATEGORY, response.body)
     },
     (error, state) => {
-      if (error.status === 403) {
-        return state.messages.push({
-          title: 'Oh Snap!',
-          message: 'Sorry you need to log in again',
-          type: 'danger',
-          duration: 5000
-
-        })
-      }
-      if (error.status === 500) {
-        return state.messages.push({
-          title: 'Oh Snap!',
-          message: 'There seems to be an error please try again',
-          type: 'danger',
-          duration: 5000
-
-        })
-      }
-      return state.messages.push({
-        title: 'Oh Snap!',
-        message: 'Server is offline.Please try again in a moment',
-        type: 'danger',
-        duration: 5000
-      })
+      console.log(error.body.business)
     })
 }
 export function updateCategory ({ commit, state }, { category, token }) {

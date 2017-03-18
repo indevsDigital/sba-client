@@ -1,13 +1,31 @@
 import {
-  mapGetters, mapActions
+   mapGetters, mapActions
 } from 'vuex'
 
   /* global  localStorage:true */
 export default {
-  computed: mapGetters({
-    user: 'getUserDetails'
-  }),
+  data () {
+    return {
+      user: {
+        business: {
+          name: '',
+          county: '',
+          owner: '',
+          city: '',
+          street: ''
+        }
+      }
+    }
+  },
+  created () {
+    this.fetchData()
+  },
   methods: {
+    fetchData () {
+      if (this.$store.getters.getUserDetails) {
+        this.user = this.$store.getters.getUserDetails
+      }
+    },
     ...mapActions([
       'updateBusiness'
     ]),
@@ -17,7 +35,7 @@ export default {
         .then(() => {
           this.$store.dispatch('addToMessageBus', {
             title: 'Success',
-            message: `Your Business details have been updated`,
+            message: `Your Business details have been updated successfully`,
             type: 'success',
             duration: 5000
           })

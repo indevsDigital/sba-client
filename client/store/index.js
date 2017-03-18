@@ -10,6 +10,7 @@ import messages from './modules/messages'
 import products from './modules/products'
 import categories from './modules/categories'
 import user from './modules/user'
+import business from './modules/business'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -22,7 +23,8 @@ const store = new Vuex.Store({
     messages,
     products,
     categories,
-    user
+    user,
+    business
   },
   state: {
     pkg

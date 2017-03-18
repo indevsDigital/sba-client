@@ -1,5 +1,5 @@
 export default{
-  props: ['category'],
+  props: ['category', 'user'],
   data () {
     return {
       Formerrors: {}
