@@ -4,6 +4,7 @@
         <article class="tile is-child box">
           <h1 class="title">Update Business Details </h1>
           <div class="block">
+            <input type="hidden" v-model="user.business.id"
             <label class="label">Name</label>
             <p class="control">
               <input class="input" type="text" placeholder="name" v-model="user.business.name">
@@ -21,7 +22,7 @@
               <input class="input" type="text" placeholder="Street" v-model="user.business.street">
             </p>
             <p class="control">
-              <button class="button is-success">
+              <button class="button is-success" v-on:click="onUpdate(user.business)">
                 Update
               </button>
             </p>
