@@ -15,3 +15,11 @@ export function updateBusiness ({ commit }, {business, token}) {
     commit(UPDATE_BUSINESS, response.body)
   })
 }
+export function saveBusiness ({commit, state}, {business, token}) {
+  const index = state.business.findIndex((b) => b.id === business.id)
+  if (index !== -1) {
+    return updateBusiness({commit}, {business, token})
+  } else {
+    return createBusiness({commit}, {business, token})
+  }
+}
