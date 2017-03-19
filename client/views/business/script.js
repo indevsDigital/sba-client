@@ -1,31 +1,30 @@
 import {
-   mapGetters, mapActions
+   mapActions
 } from 'vuex'
 
   /* global  localStorage:true */
 export default {
   data () {
     return {
-      user: {
-        business: {
-          name: '',
-          county: '',
-          owner: '',
-          city: '',
-          street: ''
-        }
-      }
+      business: [{
+        id: null,
+        name: '',
+        county: '',
+        city: '',
+        street: ''
+      }]
     }
   },
   created () {
-    this.fetchData()
+    const token = localStorage.getItem('token')
+    this.$store.dispatch('fetchBusiness', token).then(() => {
+      const business = this.$store.getters.getBusiness
+      if (business.length > 0) {
+        this.business = {...business}
+      }
+    })
   },
   methods: {
-    fetchData () {
-      if (this.$store.getters.getUserDetails) {
-        this.user = this.$store.getters.getUserDetails
-      }
-    },
     ...mapActions([
       'updateBusiness'
     ]),

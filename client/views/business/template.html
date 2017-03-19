@@ -1,29 +1,29 @@
-<div class="column animated" v-if="user.business">
+<div class="column animated" v-if="business">
     <div class="is-ancestor tile">
       <div class="tile is-parent column is-half is-offset-one-quarter">
         <article class="tile is-child box">
-          <h1 class="title">Update Business Details </h1>
+          <h1 class="title">{{business[0].id ? 'Edit' : 'Add New'}} Business Details </h1>
           <div class="block">
-            <input type="hidden" v-model="user.business.id"
+            <input type="hidden" v-model="business[0].id"
             <label class="label">Name</label>
             <p class="control">
-              <input class="input" type="text" placeholder="name" v-model="user.business.name">
+              <input class="input" type="text" placeholder="name" v-model="business[0].name">
             </p>
             <label class="label">County</label>
             <p class="control">
-              <input class="input" type="text" placeholder="County" v-model="user.business.county">
+              <input class="input" type="text" placeholder="County" v-model="business[0].county">
             </p>
             <label class="label">City</label>
             <p class="control">
-              <input class="input" type="text" placeholder="City" v-model="user.business.city">
+              <input class="input" type="text" placeholder="City" v-model="business[0].city">
             </p>
             <label class="label">Street</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Street" v-model="user.business.street">
+              <input class="input" type="text" placeholder="Street" v-model="business[0].street">
             </p>
             <p class="control">
-              <button class="button is-success" v-on:click="onUpdate(user.business)">
-                Update
+              <button class="button is-success" v-on:click="onUpdate(business[0])">
+                {{business[0].id ? 'Update' : 'Add'}} business
               </button>
             </p>
           </div>
