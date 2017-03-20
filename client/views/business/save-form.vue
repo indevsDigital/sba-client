@@ -8,66 +8,35 @@
             <input type="hidden" v-model="business.id">
             <label class="label">Name</label>
             <p class="control">
-              <input class="input" type="text" placeholder="name" v-model="business.name">
+              <input class="input" type="text" placeholder="name" v-model="business.name" v-bind:class="{'is-danger': FormErrors.name }">
+              <span v-if="FormErrors.name" class="help is-danger">{{ FormErrors.name }}</span>
             </p>
             <label class="label">County</label>
             <p class="control">
-              <input class="input" type="text" placeholder="County" v-model="business.county">
+              <input class="input" type="text" placeholder="County" v-model="business.county" v-bind:class="{'is-danger': FormErrors.county }">
+              <span v-if="FormErrors.county" class="help is-danger">{{ FormErrors.county }}</span>
             </p>
             <label class="label">City</label>
             <p class="control">
-              <input class="input" type="text" placeholder="City" v-model="business.city">
+              <input class="input" type="text" placeholder="City" v-model="business.city" v-bind:class="{'is-danger': FormErrors.city }">
+              <span v-if="FormErrors.city" class="help is-danger">{{ FormErrors.city }}</span>
             </p>
             <label class="label">Street</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Street" v-model="business.street">
+              <input class="input" type="text" placeholder="Street" v-model="business.street" v-bind:class="{'is-danger': FormErrors.street }">
+              <span v-if="FormErrors.street" class="help is-danger">{{ FormErrors.street }}</span>
             </p>
             <p class="control">
-              <button class="button is-success" v-on:click="onUpdate(business)">
+              <button class="button is-success" @click="onSubmit()">
                 {{business.id ? 'Update' : 'Add'}} business
               </button>
+              <button class="button is-danger" @click="onCancel()">Cancel</button>
             </p>
           </div>
-        </article>
+         </article>
       </div>
     </div>
   </div>
 </template>
-<script>
-  export default {
-    props: ['business'],
-    data () {
-      return {
-        FormErrors: {}
-      }
-    },
-    methods: {
-      onCancel () {
-        this.Formerrors = {}
-        this.$emit('cancel')
-      },
-      onSubmit () {
-        if (this.validate_form()) {
-          this.$emit('submit', this.business)
-        }
-      },
-      validate_form () {
-        const errors = {}
-        if (!this.business.name) {
-          errors.name = 'Name is required'
-        }
-        if (!this.business.county) {
-          errors.county = 'County is required'
-        }
-        if (!this.business.city) {
-          errors.city = 'City is required'
-        }
-        if (!this.business.street) {
-          errors.street = 'Street is required'
-        }
-        this.Formerrors = errors
-        return Object.keys(errors).length === 0
-      }
-    }
-  }
+<script src="./save-form.js">
 </script>

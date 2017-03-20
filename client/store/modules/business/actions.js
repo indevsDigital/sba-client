@@ -6,7 +6,7 @@ export function fetchBusiness ({ commit }, token) {
   .then((response) => commit(FETCH_DETAILS, response.body))
 }
 export function createBusiness ({commit}, {business, token}) {
-  return http.get('businesses/', business, {Authorization: 'JWT ' + token})
+  return http.post('businesses/', business, {Authorization: 'JWT ' + token})
     .then((response) => commit(CREATE_BUSINESS, response.body))
 }
 export function updateBusiness ({ commit }, {business, token}) {
