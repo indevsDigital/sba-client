@@ -16,8 +16,8 @@ const initialData = () => {
       city: '',
       street: ''
     },
-    edit:false,
-    add:true
+    edit: false,
+    add: true
   }
 }
 /* global  localStorage:true */
@@ -67,7 +67,7 @@ export default {
       this.add = false
       this.edit = false
     },
-    editbusiness() {
+    editbusiness () {
       this.edit = true
     },
     onEditBusiness (business) {

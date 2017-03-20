@@ -4,7 +4,7 @@
     <button type="button" class="button is-success" @click="onClickprofile()">Profile</button>
   </div>
   <transition name="fade" >
-  <div class="column animated" v-if="personal && user.User">
+  <div class="column animated" v-if="personal && userInForm">
     <div class="is-ancestor tile">
       <div class="tile is-parent column is-half is-offset-one-quarter">
         <article class="tile is-child box">
@@ -12,22 +12,22 @@
           <div class="block">
             <label class="label">Username</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Username" v-model="user.User.username">
+              <input class="input" type="text" placeholder="Username" v-model="userInForm.username">
             </p>
             <label class="label">Email</label>
             <p class="control">
-              <input class="input" type="email" placeholder="Email" v-model="user.User.email">
+              <input class="input" type="email" placeholder="Email" v-model="userInForm.email">
             </p>
             <label class="label">First Name</label>
             <p class="control">
-              <input class="input" type="text" placeholder="First Name" v-model="user.User.first_name">
+              <input class="input" type="text" placeholder="First Name" v-model="userInForm.first_name">
             </p>
             <label class="label">Last Name</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Last Name" v-model="user.User.last_name">
+              <input class="input" type="text" placeholder="Last Name" v-model="userInForm.last_name">
             </p>
             <p class="control">
-              <button class="button is-success">
+              <button class="button is-success" @click="onUpdateUser(userInForm)">
                 Update
               </button>
             </p>
@@ -51,7 +51,7 @@
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-4">{{user.User.username}}</p>
+        <p class="title is-4">{{userInForm.username}}</p>
         <p class="subtitle is-6">Profile Picture</p>
       </div>
     </div>
@@ -59,15 +59,15 @@
 </div>
             <label class="label">Username</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Username" v-model="user.User.username">
+              <input class="input" type="text" placeholder="Username" v-model="userInForm.username">
             </p>
             <label class="label">Nation I.D</label>
             <p class="control">
-              <input class="input" type="text" placeholder="I.D" v-model="user.User.first_name">
+              <input class="input" type="text" placeholder="I.D" v-model="userInForm.first_name">
             </p>
             <label class="label">Phone Number</label>
             <p class="control">
-              <input class="input" type="text" placeholder="Phone Number" v-model="user.User.last_name">
+              <input class="input" type="text" placeholder="Phone Number" v-model="userInForm.last_name">
             </p>
             <p class="control">
               <button class="button is-success">
