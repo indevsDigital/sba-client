@@ -10,7 +10,7 @@ import { TOGGLE_SIDEBAR } from 'vuex-store/mutation-types'
 /* global  localStorage:true */
 Vue.use(Resource)
 Vue.use(NProgress)
-Vue.http.options.root = 'http://127.0.0.1:8000/api'
+Vue.http.options.root = 'https://sba-api-server.herokuapp.com/api'
 Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token') || ''
 Vue.http.interceptors.push(function (request, next) {
   next(function (response) {

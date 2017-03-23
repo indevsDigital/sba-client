@@ -12,7 +12,8 @@ export default {
       localStorage.setItem('username', username)
       context.$store.dispatch('toggleAuth', {
         'authenticated': true,
-        'username': username
+        'username': username,
+        'token': response.body.token
       })
       context.$store.dispatch('addToMessageBus', {
         title: 'Success',
@@ -65,7 +66,11 @@ export default {
   logout (context) {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
-    context.$store.dispatch('toggleAuth', false)
+    context.$store.dispatch('toggleAuth', {
+      'authenticated': false,
+      'username': '',
+      'token': ''
+    })
   },
   loggedIn () {
     return !!localStorage.token

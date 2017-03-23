@@ -1,7 +1,7 @@
 import {
   mapGetters, mapActions
 } from 'vuex'
-import SaveCategoryForm from './save-category'
+import SaveCategoryForm from './save-category/index.vue'
 
 const initialData = () => {
   return {
@@ -19,24 +19,24 @@ export default {
   },
   data: initialData,
   created () {
-    const token = localStorage.getItem('token')
-    this.$store.dispatch('fetchCategories', token)
+    this.$store.dispatch('fetchBusiness', localStorage.getItem('token'))
+    this.$store.dispatch('fetchCategories')
   },
   methods: {
     ...mapActions([
       'saveCategory',
       'deleteCategory'
     ]),
-    business () {
-      return `http://127.0.0.1:8000/api/businesses/${this.user.business.id}/`
+    business_url () {
+      return `http://127.0.0.1:8000/api/businesses/${this.business[0].id}/`
     },
     onFormSave (Category) {
       const token = localStorage.getItem('token')
-      this.saveCategory({'category': {'id': Category.id, 'name': Category.name, 'business': this.business()}, 'token': token}).then(() => {
+      this.saveCategory({'category': {'id': Category.id, 'name': Category.name, 'business': this.business_url()}, 'token': token}).then(() => {
         this.resetCategoryInForm()
         this.$store.dispatch('addToMessageBus', {
           title: 'Success',
-          message: `The Category has been Added sucessfully`,
+          message: `The Category has been ${Category.id ? 'edited' : 'added'}   sucessfully`,
           type: 'success',
           duration: 5000
         })
@@ -65,6 +65,6 @@ export default {
   },
   computed: mapGetters({
     categories: 'getCategories',
-    user: 'getUserDetails'
+    business: 'getBusiness'
   })
 }

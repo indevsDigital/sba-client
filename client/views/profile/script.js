@@ -1,5 +1,5 @@
 import {
-  mapGetters,mapActions
+  mapGetters, mapActions
 } from 'vuex'
 const initialData = () => {
   return {
@@ -20,12 +20,17 @@ const initialData = () => {
     profile: false
   }
 }
+/* global  localStorage:true */
 export default {
   data: initialData,
   computed: mapGetters({
-    user: 'getUserDetails'
+    user: 'getUserDetails',
+    auth: 'authenticated'
   }),
   created () {
+    this.$store.dispatch('fetchUserDetails', {
+      'token': localStorage.getItem('token')
+    })
     this.onEditUser(this.user.User)
   },
   methods: {
@@ -39,19 +44,19 @@ export default {
     },
     onUpdateUser (user) {
       const token = localStorage.getItem('token')
-      this.updateUser({'user':user,'token':token}).then(() => {
+      this.updateUser({'user': user, 'token': token}).then(() => {
         this.$store.dispatch('addToMessageBus', {
           title: 'Success',
-          message: `Your user details have been updated sucessfully`,
           type: 'success',
+          message: `Your user details have been updated successfully`,
           duration: 5000
         })
       })
     },
-    onEditProfile(profile) {
+    onEditProfile (profile) {
       this.profileInForm = {...profile}
     },
-    onEditUser(user) {
+    onEditUser (user) {
       this.userInForm = {...user}
     },
     onClickprofile () {

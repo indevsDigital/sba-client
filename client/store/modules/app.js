@@ -14,7 +14,8 @@ const state = {
   },
   auth: {
     authenticated: false,
-    username: ''
+    username: '',
+    token: ''
   }
 }
 
@@ -40,6 +41,7 @@ const mutations = {
   [types.TOGGLE_AUTHENTICATED] (state, auth) {
     state.auth.authenticated = auth.authenticated
     state.auth.username = auth.username
+    state.auth.token = auth.token
   }
 }
 

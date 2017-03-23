@@ -5,9 +5,10 @@ import {
   UPDATE_CATEGORY,
   DELETE_CATEGORY
 } from './mutation-types'
+/* global  localStorage:true */
 
-export function fetchCategories ({ commit }, token) {
-  return http.get('categories/', {Authorization: 'JWT ' + token})
+export function fetchCategories ({ commit }) {
+  return http.get('categories/', {Authorization: 'JWT ' + localStorage.getItem('token')})
     .then((response) => commit(FETCH_CATEGORIES, response.body))
 }
 export function createCategory ({ commit, state }, {category, token}) {
