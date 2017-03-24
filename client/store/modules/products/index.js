@@ -1,7 +1,7 @@
 import * as actions from './actions'
 import * as getters from './getters'
 
-import { FETCH_PRODUCTS, CREATE_PRODUCT, UPDATE_PRODUCT, FETCH_PRODUCT }
+import { FETCH_PRODUCTS, CREATE_PRODUCT, UPDATE_PRODUCT, FETCH_PRODUCT, DELETE_PRODUCT }
       from './mutation-types'
 
 const initialState = {
@@ -34,6 +34,9 @@ const mutations = {
       // See http://vuejs.org/guide/list.html#Caveats
       state.main_products.splice(index, 1, product)
     }
+  },
+  [DELETE_PRODUCT] (state, id) {
+    state.products = state.products.filter(p => p.id !== id)
   }
 }
 export default {

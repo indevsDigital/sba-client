@@ -20,7 +20,7 @@ export default {
     },
     onSubmit () {
       if (this.validate_form()) {
-        this.$emit('submit', this.product)
+        this.$emit('save', this.product)
       }
     },
     validate_form () {
@@ -31,7 +31,7 @@ export default {
       if (!this.product.product_code) {
         errors.product_code = 'The code is required'
       }
-      if (!this.product.category) {
+      if (!this.product.product_category) {
         errors.category = 'Category is required'
       }
       if (!this.product.unit_price) {

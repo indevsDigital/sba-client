@@ -1,6 +1,6 @@
 import { http } from 'vue'
 import {
-  FETCH_PRODUCTS, CREATE_PRODUCT, UPDATE_PRODUCT, FETCH_PRODUCT
+  FETCH_PRODUCTS, CREATE_PRODUCT, UPDATE_PRODUCT, FETCH_PRODUCT, DELETE_PRODUCT
 } from './mutation-types'
 
 export function fetchProducts ({ commit }, token) {
@@ -20,6 +20,12 @@ export function updateProduct ({ commit }, {product, token}) {
     .then((response) => {
       commit(UPDATE_PRODUCT, response.body)
     })
+}
+export function deleteProduct ({ commit }, {
+                                  id, token
+                                }) {
+  return http.delete(`products/${id}/`, {Authorization: `JWT ${token}`})
+    .then((response) => commit(DELETE_PRODUCT, id))
 }
 export function saveProduct ({ commit, state }, { product, token }) {
   const index = state.products.findIndex((p) => p.id === product.id)

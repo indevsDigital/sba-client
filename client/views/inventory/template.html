@@ -2,7 +2,7 @@
   <save-product
     :product="productInForm"
     :categories="categories"
-    v-on:submit="onFormSave"
+    v-on:save="onFormSave"
   ></save-product>
 <div class="tile is-ancestor">
   <div class="tile is-parent">
@@ -30,18 +30,13 @@
               <td>Ksh. {{product.unit_price}}</td>
               <td>{{product.available_units}}</td>
               <td class="is-icon">
-                <a href="#">
+                <a href="#" v-on:click.prevent="onRemoveClicked(product)" title="delete this product">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>
               <td class="is-icon">
                 <a href="#" v-on:click.prevent="onEditClicked(product)" title="Edit this product">
                   <i class="fa fa-pencil"></i>
-                </a>
-              </td>
-              <td class="is-icon">
-                <a href="#" title="view more">
-                  <i class="fa fa-plus"></i>
                 </a>
               </td>
             </tr>

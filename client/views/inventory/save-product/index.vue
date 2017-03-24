@@ -7,10 +7,8 @@
         <label class="label">Product Name</label>
         <p class="control">
           <input class="input" type="text"  placeholder="product name" v-model="product.product_name">
-          <span v-if="FormErrors.name" class="help is-danger">{{ FormErrors.name }}</span>
         </p>
       </div>
-
       <div class="field">
         <label class="label">Product Code</label>
         <p class="control">
@@ -65,8 +63,8 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-primary" v-bind:click="onSubmit()">Submit</button>
-          <button class="button is-danger">Cancel</button>
+          <button class="button is-primary" @click="onSubmit()">Submit</button>
+          <button class="button is-danger" @click="onCancel()">Cancel</button>
         </p>
       </div>
     </div>

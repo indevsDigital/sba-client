@@ -15,7 +15,6 @@ const initialData = () => {
       purchase_date: '',
       total_inital_units: null,
       business: null,
-      end_on: '',
       expires_on: '',
       available_units: '',
       sold_unit: null,
@@ -35,13 +34,14 @@ export default {
   },
   methods: {
     ...mapActions([
-      'saveProduct'
+      'saveProduct',
+      'deleteProduct'
     ]),
     business_url () {
       return `http://127.0.0.1:8000/api/businesses/${this.business[0].id}/`
     },
     category_url () {
-      return `http://127.0.0.1:8000/api/categories/${this.productInForm.product_category}`
+      return `http://127.0.0.1:8000/api/categories/${this.productInForm.product_category}/`
     },
     onFormSave (product) {
       const token = localStorage.getItem('token')
@@ -49,17 +49,41 @@ export default {
         'product': {
           'id': product.id,
           'product_name': product.product_name,
+          'product_code': product.product_code,
           'description': product.description,
           'product_category': this.category_url(),
           'unit_price': product.unit_price,
           'purchase_date': product.purchase_date,
           'total_inital_units': product.total_inital_units,
           'business': this.business_url(),
-          'end_on': product.end_on,
           'expires_on': product.expires_on,
           'available_units': product.available_units
         },
         'token': token
+      }).then(() => {
+        this.resetProductInForm()
+        this.$store.dispatch('addToMessageBus', {
+          title: 'Success',
+          message: `The product has been ${product.id ? 'edited' : 'added'}   sucessfully`,
+          type: 'success',
+          duration: 5000
+        })
+        const token = localStorage.getItem('token')
+        this.$store.dispatch('fetchProducts', token)
+      })
+    },
+    onRemoveClicked (id) {
+      const token = localStorage.getItem('token')
+      this.deleteProduct(id, token).then(() => {
+        if (id === this.productInForm.id) {
+          this.resetProductInForm()
+        }
+        this.$store.dispatch('addToMessageBus', {
+          title: 'Success',
+          message: `The Product has been deleted sucessfully`,
+          type: 'success',
+          duration: 5000
+        })
       })
     },
     resetProductInForm () {
