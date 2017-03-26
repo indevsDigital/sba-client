@@ -8,16 +8,24 @@
           </a>
         </div>
         <div class="nav-center">
-          <a class="nav-item hero-brand" href="/">
+          <router-link class="nav-item hero-brand" to="/">
             <img src="~assets/logo.svg" :alt="pkginfo.description">
             <tooltip :label="'v' + pkginfo.version" placement="right" type="success" size="small" :no-animate="true" :always="true" :rounded="true">
               <div class="is-hidden-mobile">
-                <span class="vue">Vue</span><strong class="admin">Admin</strong>
-              </div>
-            </tooltip>
-          </a>
+                <span class="vue">Small Business Analytics </span><strong class="admin">SBA</strong>
+          </div>
+          </tooltip>
+          </router-link>
         </div>
-        <div class="nav-right is-flex"></div>
+        <div class="nav-right">
+        <router-link v-if="auth.authenticated" :to="{name: 'My Profile', params: { username: auth.username } }" class="nav-item"><span class="icon"><i class="fa fa-user"></i></span>
+            My Profile
+          </router-link>
+        </div>
+        <div class="nav-right">
+          <router-link v-if="auth.authenticated" to="/login" class="nav-item last-item"><span class="icon"><i class="fa fa-sign-out"></i></span>Log out</router-link>
+          <router-link v-if="!auth.authenticated" to="/login" class="nav-item last-item"><span class="icon"><i class="fa fa-sign-in"></i></span>Log in</router-link>
+        </div>
       </nav>
     </div>
   </section>
@@ -26,20 +34,17 @@
 <script>
 import Tooltip from 'vue-bulma-tooltip'
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
-
   components: {
     Tooltip
   },
-
   props: {
     show: Boolean
   },
-
   computed: mapGetters({
     pkginfo: 'pkg',
-    sidebar: 'sidebar'
+    sidebar: 'sidebar',
+    auth: 'authenticated'
   }),
 
   methods: mapActions([
@@ -71,8 +76,11 @@ export default {
     white-space: nowrap;
   }
 }
-
+.last-item{
+  margin-right:30px;
+}
 .hero-brand {
+  margin-left: 60px;
   .vue {
     margin-left: 10px;
     color: #36AC70;

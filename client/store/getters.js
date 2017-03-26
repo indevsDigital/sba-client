@@ -2,6 +2,7 @@ const pkg = state => state.pkg
 const app = state => state.app
 const device = state => state.app.device
 const sidebar = state => state.app.sidebar
+const authenticated = state => state.app.auth
 const effect = state => state.app.effect
 const menuitems = state => state.menu.items
 const componententry = state => {
@@ -12,6 +13,7 @@ export {
   pkg,
   app,
   device,
+  authenticated,
   sidebar,
   effect,
   menuitems,

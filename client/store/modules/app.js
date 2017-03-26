@@ -11,6 +11,10 @@ const state = {
   },
   effect: {
     translate3d: true
+  },
+  auth: {
+    authenticated: false,
+    username: ''
   }
 }
 
@@ -32,6 +36,10 @@ const mutations = {
     for (let name in effectItem) {
       state.effect[name] = effectItem[name]
     }
+  },
+  [types.TOGGLE_AUTHENTICATED] (state, auth) {
+    state.auth.authenticated = auth.authenticated
+    state.auth.username = auth.username
   }
 }
 

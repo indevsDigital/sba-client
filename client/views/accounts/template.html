@@ -1,0 +1,47 @@
+<div>
+  <h4 class="title has-text-centered">Here are the accounts for {{account}} units</h4>
+  <div class="is-ancestor tile">
+  <div class="tile is-parent column is-3 is-offset-5">
+    <article class="tile is-child box">
+      <p class="field">Total: Ksh {{total}}</p>
+    </article>
+  </div>
+  </div>
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <div class="table-responsive">
+        <table class="table is-bordered is-striped is-narrow" v-if="products.length > 0">
+          <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Available Units</th>
+            <th>Unit Price</th>
+            <th colspan="3">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="product in products">
+            <td>
+              {{product.product_code}}
+            </td>
+            <td>
+              ksh. {{product.product_name}}
+            </td>
+            <td>{{product.available_units}}</td>
+            <td>{{product.unit_price}}</td>
+            <td class="is-icon">
+              <a href="#" title="View More details about the product">
+                <i class="fa fa-plus"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p v-if="!products.length>0">There are no products in stock yet</p>
+      </div>
+    </article>
+  </div>
+</div>
+</div>
