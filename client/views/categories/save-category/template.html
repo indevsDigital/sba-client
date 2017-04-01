@@ -1,0 +1,29 @@
+<div class="column">
+  <div class="is-ancestor tile">
+    <div class="tile is-parent column is-half is-offset-one-quarter">
+      <article class="tile is-child box">
+        <h1 class="title">{{category.id ? 'Edit' : 'Add'}} Category </h1>
+        <div class="block styles-box">
+        </div>
+        <div class="block">
+          <label class="label">Name</label>
+          <p class="control has-icon">
+            <input class="input" type="text" placeholder="name" v-model="category.name" v-bind:class="{'is-danger': Formerrors.name }" v-on:keyup.enter="onSubmit()">
+            <span class="icon is-small">
+            <i class="fa fa-info"></i>
+            </span>
+            <span v-if="Formerrors.name" class="help is-danger">{{ Formerrors.name }}</span>
+          </p>
+          <p class="control">
+            <button class="button is-success" @click="onSubmit()">
+                {{category.id ? 'Update' : 'Add'}} category
+              </button>
+            <button class="button is-danger" @click="onCancel()">
+                cancel
+              </button>
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

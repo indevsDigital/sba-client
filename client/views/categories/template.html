@@ -1,0 +1,49 @@
+<div>
+  <div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <save-category-form
+      :category="categoryInForm"
+      v-on:submit="onFormSave"
+      v-on:cancel="resetCategoryInForm"
+    ></save-category-form>
+  </div>
+  </div>
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <h4 class="title">Current Categories</h4>
+      <p class="">The categories are for items you are selling in the shop</p>
+      <div class="table-responsive">
+        <table class="table is-bordered is-striped is-narrow" v-if="categories.length>0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th colspan="2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(category, index) in categories" track-by="id">
+              <td>
+                {{index + 1}}
+              </td>
+              <td>{{category.name}}</td>
+              <td class="is-icon">
+                <a href="#" v-on:click.prevent.stop="onRemoveClicked(category)" title="Delete this category">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+              <td class="is-icon">
+                <a href="#" v-on:click.prevent="onEditClicked(category)" title="edit this category">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p v-if="!categories.length>0">There are no categories added yet</p>
+      </div>
+    </article>
+  </div>
+</div>
+</div>

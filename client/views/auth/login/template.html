@@ -1,0 +1,33 @@
+<div class="column">
+  <div class="is-ancestor tile">
+    <div class="tile is-parent column is-half is-offset-one-quarter">
+      <article class="tile is-child box">
+        <h1 class="title">Login </h1>
+        <div class="block styles-box">
+          <notification v-if="error" :title="'Oh Snap'" :container="'.styles-box'" :type="'danger'" :direction="'Down'" :message="error"
+            :duration="0"></notification>
+        </div>
+        <div class="block">
+          <p class="control has-icon">
+            <input class="input" type="text" placeholder="Username" v-model="credentials.username" v-bind:class="{'is-danger': Formerrors.username }" v-on:keyup.enter="submit()">
+            <span class="icon is-small"><i class="fa fa-user"></i></span>
+            <span v-if="Formerrors.username" class="help is-danger">{{ Formerrors.username }}</span>
+          </p>
+          <p class="control has-icon">
+            <input class="input" type="password" placeholder="Password" v-model="credentials.password" v-bind:class="{'is-danger': Formerrors.password}" v-on:keyup.enter="submit()">
+            <span class="icon is-small"><i class="fa fa-lock"></i></span>
+            <span v-if="Formerrors.password" class="help is-danger">{{ Formerrors.password }}</span>
+          </p>
+          <p class="control">
+            <button class="button is-success" @click="submit()">
+                Login
+              </button>
+            <button class="button is-light" @click="navigate()">
+                Register
+              </button>
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

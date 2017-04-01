@@ -1,0 +1,36 @@
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <h4 class="title has-text-centered">Here are the receipts</h4>
+      <div class="table-responsive">
+        <table class="table is-bordered is-striped is-narrow" v-if="receipts.length > 0">
+          <thead>
+          <tr>
+            <th>Number</th>
+            <th>Total Selling Price</th>
+            <th>Sold At</th>
+            <th colspan="3">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="receipt in receipts">
+            <td>
+              {{receipt.receipt_number}}
+            </td>
+            <td>
+              ksh. {{receipt.total_selling_price}}
+            </td>
+            <td>{{receipt.sold_at | formatDate}}</td>
+            <td class="is-icon">
+              <a href="#" title="View More details about the receipt">
+                <i class="fa fa-plus"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p v-if="!receipts.length>0">There are no receipts in the records</p>
+      </div>
+    </article>
+  </div>
+</div>

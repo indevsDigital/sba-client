@@ -1,0 +1,2 @@
+export const FETCH_DETAILS = 'user/FETCH_DETAILS'
+export const UPDATE_DETAILS_USER = 'user/UPDATE_DETAILS_USER'

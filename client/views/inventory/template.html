@@ -1,0 +1,50 @@
+<div>
+  <save-product
+    :product="productInForm"
+    :categories="categories"
+    v-on:save="onFormSave"
+  ></save-product>
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <h4 class="title">Current Products in the Stock</h4>
+      <div class="table-responsive">
+        <table class="table is-bordered is-striped is-narrow" v-if="products.length > 0">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Unit Price</th>
+              <th>Available Units</th>
+              <th colspan="3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="product in products">
+              <td>
+                <a href="#">{{product.product_code}}</a>
+              </td>
+              <td>
+                {{product.product_name}}
+              </td>
+              <td>Ksh. {{product.unit_price}}</td>
+              <td>{{product.available_units}}</td>
+              <td class="is-icon">
+                <a href="#" v-on:click.prevent="onRemoveClicked(product)" title="delete this product">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+              <td class="is-icon">
+                <a href="#" v-on:click.prevent="onEditClicked(product)" title="Edit this product">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p v-if="!products.length>0">There are no products in stock yet</p>
+      </div>
+    </article>
+  </div>
+</div>
+</div>
